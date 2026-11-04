@@ -1,0 +1,39 @@
+CanalSize - versione per Android e iOS (app web installabile, PWA)
+===================================================================
+
+Contenuto della cartella
+  index.html               l'applicazione completa (dati, immagini e logo sono dentro il file)
+  manifest.webmanifest     dati per l'installazione come app (nome, icone, colori)
+  sw.js                    permette l'uso senza connessione dopo la prima apertura
+  icon-192.png, icon-512.png, icon-maskable-512.png, apple-touch-icon.png    icone
+  sorgenti\                file di partenza e prove (servono solo per modificare l'app)
+
+1) Pubblicazione (una sola volta)
+   Serve un indirizzo https, perché sul telefono l'installazione e l'uso senza
+   connessione funzionano solo così. Carica TUTTI i file della cartella (esclusa "sorgenti")
+   in una stessa cartella di un sito web, per esempio:
+     - GitHub Pages (gratis): crea un repository, carica i file, attiva "Pages";
+     - Netlify o Cloudflare Pages (gratis): trascina la cartella;
+     - il server web dell'azienda (basta che sia https).
+   Anche pubblicata, l'app non invia dati: calcoli e file restano sul telefono.
+
+2) Installazione sul telefono
+   Android (Chrome):  apri l'indirizzo, menù ⋮ > "Installa app" (o "Aggiungi a schermata Home").
+   iPhone/iPad (Safari): apri l'indirizzo, pulsante Condividi > "Aggiungi alla schermata Home".
+
+3) Uso
+   - Salva / Apri: il file .passerella è lo stesso del programma per Windows: si può creare su un
+     dispositivo e aprire sull'altro.
+   - Stampa: apre la stampa del telefono. Scegli "Salva come PDF" (Android) oppure
+     Condividi > Salva su File (iPhone) per avere il PDF in A4 orizzontale.
+   - Database: puoi caricare un file Excel (.xlsx) o CSV con lo stesso formato del catalogo
+     (cavi nelle colonne A-D, canale nelle colonne E-G, prime 1500 righe). Resta salvato sul telefono.
+   - Il lavoro in corso si salva da solo sul dispositivo.
+
+4) Aggiornare l'app
+   Sostituisci index.html (e sw.js) sul sito. Nel file sw.js cambia VERSIONE (es. "canalsize-v2"):
+   i telefoni prendono la nuova versione alla riapertura.
+
+Per modificare i dati dell'app (nuovo catalogo, nuove immagini):
+   aggiorna i file nella cartella del programma per Windows, poi esegui in sorgenti\
+   build_assets.py e build.py (richiedono Python con le librerie cairosvg e Pillow).
