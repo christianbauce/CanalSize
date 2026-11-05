@@ -1,4 +1,4 @@
-English
+
 How to install CanalSize from its GitHub page
 1. Open the project page on GitHub: https://christianbauce.github.io/CanalSize/
 2. Once the web app opens in your phone’s browser:
